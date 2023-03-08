@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { AddAction, SubAction } from "./redux/action";
-import { store } from "./redux/Store";
+import { AddAction, SubAction } from "../Redux/action";
+import { store } from "../Redux/store";
 
 export const Counter = () => {
   const { getState, dispatch, subscribe } = store;

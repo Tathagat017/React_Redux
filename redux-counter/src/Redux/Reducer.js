@@ -1,12 +1,12 @@
-import { ADD, SUB } from "./action";
+import { AddAction, SubAction } from "./action";
 
 export const reducer = (state, { type, payload }) => {
   console.log(state);
   switch (type) {
-    case ADD: {
+    case AddAction: {
       return { ...state, counter: state.counter + payload };
     }
-    case SUB: {
+    case SubAction: {
       return { ...state, counter: state.counter - payload };
     }
     default: {
