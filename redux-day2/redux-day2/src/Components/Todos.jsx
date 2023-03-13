@@ -6,6 +6,9 @@ import {
   todoErrorAction,
   todoRequestAction,
   todoSuccessAction,
+  postErrorAction,
+  postRequestAction,
+  postSuccessAction,
 } from "../redux/action";
 const url = "http://localhost:8080/todos";
 
@@ -30,9 +33,29 @@ export const Todos = () => {
     getData();
   }, []);
 
+  const handleAddTodo = (input) => {
+    const newTodo = {
+      title: input,
+      status: false,
+    };
+
+    //post request
+    dispatch(postRequestAction());
+    axios
+      .post(url, newTodo)
+      .then((response) => {
+        console.log(response);
+        dispatch(postSuccessAction(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(postErrorAction());
+      });
+  };
+
   return (
     <div>
-      <TodoInput />
+      <TodoInput AddTodo={handleAddTodo} />
       {todos?.map((el, i) => {
         return (
           <div key={i}>

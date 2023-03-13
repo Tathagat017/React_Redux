@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-const TodoInput = () => {
+const TodoInput = ({ AddTodo }) => {
   const [input, setInput] = useState("");
+
   const handleAddTodo = () => {
-    console.log(input);
-    setInput("");
+    AddTodo(input);
   };
   return (
     <div>
