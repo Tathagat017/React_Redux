@@ -1,31 +1,29 @@
-import React, { useState } from "react";
-import { AddAction, SubAction } from "../Redux/action";
+import { useState } from "react";
 import { store } from "../Redux/store";
+import { Add, Reduce } from "./../Redux/action";
 
-export const Counter = () => {
+const Counter = () => {
   const { getState, dispatch, subscribe } = store;
-
-  console.log(store);
-
+  const [update, setUpdate] = useState(getState().counter);
   subscribe(() => {
-    console.log("state Changed: ", getState());
+    console.log("state here", getState());
+    setUpdate(getState().counter);
   });
-
-  console.log(getState);
-  const addHandler = () => {
-    dispatch(AddAction());
+  console.log(getState().counter);
+  const handleAdd = () => {
+    dispatch(Add());
   };
-
-  const subHandler = () => {
-    dispatch(SubAction());
+  const handleReduce = () => {
+    dispatch(Reduce());
   };
-
   return (
-    <>
-      <h1>Counter</h1>
+    <div>
+      <div>counter</div>
       <h1>{getState().counter}</h1>
-      <button onClick={addHandler}>+</button>
-      <button onClick={subHandler}>-</button>
-    </>
+      <button onClick={handleAdd}>+</button>
+      <button onClick={handleReduce}>-</button>
+    </div>
   );
 };
+
+export default Counter;

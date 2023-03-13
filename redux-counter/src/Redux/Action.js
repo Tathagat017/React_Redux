@@ -1,9 +1,9 @@
-import { ADD, SUB } from "./actionType";
-
-export const AddAction = () => {
-  return { type: ADD, payload: 1 };
+//{type,payload}
+import { ADD } from "./actionType";
+import { REDUCE } from "./actionType";
+export const Add = (payload = 1) => {
+  return { type: ADD, payload: payload };
 };
-
-export const SubAction = () => {
-  return { type: SUB, payload: 1 };
+export const Reduce = (payload = 1) => {
+  return { type: REDUCE, payload: payload };
 };
