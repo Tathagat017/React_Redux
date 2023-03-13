@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import TodoInput from "./TodoInput";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import {
   todoErrorAction,
   todoRequestAction,
@@ -14,7 +14,7 @@ const url = "http://localhost:8080/todos";
 
 export const Todos = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todos, shallowEqual);
   const isLoading = useSelector((state) => state.loading);
   console.log("todos re render");
   const getData = () => {

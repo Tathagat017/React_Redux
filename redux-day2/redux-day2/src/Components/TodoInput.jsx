@@ -5,6 +5,7 @@ const TodoInput = ({ AddTodo }) => {
 
   const handleAddTodo = () => {
     AddTodo(input);
+    setInput("");
   };
   return (
     <div>
