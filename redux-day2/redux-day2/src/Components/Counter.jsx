@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAction, reduceAction } from "../redux/action";
 export default function Counter() {
   const dispatch = useDispatch();
-
+  console.log("re-rendered");
   const count = useSelector((state) => {
     console.log(state.counter);
     return state.counter;

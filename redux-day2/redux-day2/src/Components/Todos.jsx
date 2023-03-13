@@ -15,6 +15,7 @@ const url = "http://localhost:8080/todos";
 export const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
+  const isLoading = useSelector((state) => state.loading);
   const getData = () => {
     dispatch(todoRequestAction());
     axios
@@ -46,6 +47,8 @@ export const Todos = () => {
       .then((response) => {
         console.log(response);
         dispatch(postSuccessAction(response.data));
+        //getDatat call to update
+        getData();
       })
       .catch((error) => {
         console.log(error);
@@ -56,6 +59,7 @@ export const Todos = () => {
   return (
     <div>
       <TodoInput AddTodo={handleAddTodo} />
+      {isLoading && <h1>Loading..</h1>}
       {todos?.map((el, i) => {
         return (
           <div key={i}>

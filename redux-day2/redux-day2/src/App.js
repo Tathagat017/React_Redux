@@ -5,7 +5,7 @@ import { Todos } from "./Components/Todos";
 function App() {
   return (
     <div className="App">
-      {/* <Counter /> */}
+      <Counter />
       <Todos />
     </div>
   );
