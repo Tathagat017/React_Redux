@@ -16,6 +16,7 @@ export const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
   const isLoading = useSelector((state) => state.loading);
+  console.log("todos re render");
   const getData = () => {
     dispatch(todoRequestAction());
     axios
